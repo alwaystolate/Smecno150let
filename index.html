@@ -206,7 +206,54 @@
     .izs-logo-wrap:hover .izs-tooltip {
       opacity: 1; transform: translateX(-50%) translateY(0);
     }
-    /* Záštita */
+    .moderator-intro {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.25);
+      border-radius: 2rem; padding: .55rem 1.2rem;
+      font-size: .9rem; color: rgba(253,246,236,0.75);
+      margin-bottom: 2rem; margin-top: .5rem;
+    }
+    .moderator-intro strong { color: var(--gold); }
+    .moderator-intro-icon { font-size: 1rem; }
+    .moderator-bio {
+      display: flex; flex-direction: column; gap: .8rem;
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid rgba(212,168,67,0.15);
+    }
+    .moderator-bio p {
+      font-size: .85rem; color: rgba(253,246,236,0.55);
+      line-height: 1.7; text-align: center;
+    }
+    .program-grid {
+      gap: 4rem; align-items: start; margin-top: 1rem;
+    }
+    .moderator-wrap {
+      display: flex; flex-direction: column; align-items: center;
+      gap: .8rem; position: sticky; top: 6rem;
+    }
+    .moderator-label {
+      font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: .2rem;
+    }
+    .moderator-photo {
+      width: 100%; border-radius: 1.2rem;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+      border: 2px solid rgba(212,168,67,0.25);
+    }
+    .moderator-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--cream); text-align: center;
+    }
+    .moderator-desc {
+      font-size: .78rem; letter-spacing: .1em;
+      color: rgba(253,246,236,0.4); text-align: center;
+    }
+    @media (max-width: 768px) {
+      .program-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .moderator-wrap { position: static; flex-direction: row; flex-wrap: wrap; justify-content: center; }
+      .moderator-photo { width: 160px; border-radius: .8rem; }
+    }
     .zastita { background: var(--dark); }
     .zastita .section-label { color: var(--gold); }
     .zastita .section-title { color: var(--cream); }
@@ -666,40 +713,60 @@
     <div class="section-label">Program dne</div>
     <h2 class="section-title" style="color:var(--cream);">Harmonogram <span style="color:var(--gold);">5. září 2026</span></h2>
     <p class="section-lead">Podrobný program bude průběžně doplňován. Níže naleznete rámcový přehled plánovaných aktivit.</p>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-time">9:00</div>
-        <div class="timeline-event">Zahájení slavnostního dne</div>
-        <div class="timeline-desc">Slavnostní zahájení oslav 150. výročí SDH Smečno za účasti hostů a zástupců města.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-time">10:00 – 14:00</div>
-        <div class="timeline-event">Den s IZS – ukázky a demonstrace</div>
-        <div class="timeline-desc">Živé ukázky práce hasičů, záchranářů a Policie ČR. Prohlídka techniky a možnost vyzkoušet si vybavení.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-time">Celý den</div>
-        <div class="timeline-event">Zábava pro děti a rodiny</div>
-        <div class="timeline-desc">Soutěže, skákací hrad, malování na obličej a další atrakce pro nejmenší.</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-time">Celý den</div>
-        <div class="timeline-event">Sbírka pro Péťu</div>
-        <div class="timeline-desc">Po celou dobu akce probíhá sbírka. Pomozte nám pomoci!</div>
-      </div>
-      <div class="timeline-item">
-        <div class="timeline-dot" style="background:var(--red);"></div>
-        <div class="timeline-time">🕐 Doplňujeme</div>
-        <div class="timeline-event">Další program bude upřesněn</div>
-        <div class="timeline-desc">Sledujte tuto stránku – program průběžně doplňujeme o další aktivity a vystoupení.</div>
-      </div>
+    <div class="moderator-intro">
+      <span class="moderator-intro-icon">🎤</span>
+      Akcí bude provázet moderátor <strong>Vlasta Korec</strong>
     </div>
-    <div class="program-note">
-      📌 <strong style="color:var(--gold-light);">Poznámka:</strong> Program se může měnit. Aktuální informace sledujte na této stránce nebo na našich sociálních sítích.
+    <div class="program-grid">
+      <div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">9:00</div>
+            <div class="timeline-event">Zahájení slavnostního dne</div>
+            <div class="timeline-desc">Slavnostní zahájení oslav 150. výročí SDH Smečno za účasti hostů a zástupců města.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">10:00 – 14:00</div>
+            <div class="timeline-event">Den s IZS – ukázky a demonstrace</div>
+            <div class="timeline-desc">Živé ukázky práce hasičů, záchranářů a Policie ČR. Prohlídka techniky a možnost vyzkoušet si vybavení.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">Celý den</div>
+            <div class="timeline-event">Zábava pro děti a rodiny</div>
+            <div class="timeline-desc">Soutěže, skákací hrad, malování na obličej a další atrakce pro nejmenší.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-time">Celý den</div>
+            <div class="timeline-event">Sbírka pro Péťu</div>
+            <div class="timeline-desc">Po celou dobu akce probíhá sbírka. Pomozte nám pomoci!</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background:var(--red);"></div>
+            <div class="timeline-time">🕐 Doplňujeme</div>
+            <div class="timeline-event">Další program bude upřesněn</div>
+            <div class="timeline-desc">Sledujte tuto stránku – program průběžně doplňujeme o další aktivity a vystoupení.</div>
+          </div>
+        </div>
+        <div class="program-note">
+          📌 <strong style="color:var(--gold-light);">Poznámka:</strong> Program se může měnit. Aktuální informace sledujte na této stránce nebo na našich sociálních sítích.
+        </div>
+      </div>
+      <!-- Moderátor -->
+      <div class="moderator-wrap">
+        <div class="moderator-label">Moderátor akce</div>
+        <img src="moderator.jpg" alt="Vlasta Korec" class="moderator-photo" />
+        <div class="moderator-name">Vlasta Korec</div>
+        <div class="moderator-desc">Moderátor slavnostního dne</div>
+        <div class="moderator-bio">
+          <p>Oslavy bude moderovat Vlasta Korec – zkušený televizní a rozhlasový moderátor s dlouholetou praxí na významných společenských akcích.</p>
+          <p>Svou kariéru spojil mimo jiné s Rádiem Impuls i televizní tvorbou a díky svému profesionálnímu vystupování patří mezi výrazné osobnosti české moderátorské scény.</p>
+          <p>Jeho profesionální vystupování a nadhled jsou zárukou důstojného a příjemného průběhu celého dne.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -714,7 +781,7 @@
         <img src="hejtmanka.jpg" alt="Hejtmanka Středočeského kraje" class="zastita-photo" />
         <div class="zastita-signature">
           <div class="zastita-sig-line"></div>
-          <span class="zastita-sig-name">Hejtmanka Středočeského kraje Mgr. Petra Pecková</span>
+          <span class="zastita-sig-name">Hejtmanka Středočeského kraje</span>
         </div>
       </div>
       <div class="zastita-text-wrap">
