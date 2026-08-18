@@ -541,6 +541,15 @@
       display: block; transition: transform .6s ease;
     }
     .showcase-item:hover img { transform: scale(1.05); }
+    .showcase-item--badge {
+      display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(ellipse at center, #241708 0%, #0a0602 100%);
+    }
+    .showcase-item--badge img {
+      width: auto; height: 60%; object-fit: contain;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,0.6));
+    }
+    .showcase-item--badge:hover img { transform: scale(1.08); }
     @media (max-width: 900px) {
       .showcase-grid {
         grid-template-columns: 1fr 1fr 1fr;
@@ -994,12 +1003,12 @@
       <span class="izs-label">VS ČR</span>
       <div class="izs-tooltip">Vězeňská služba České republiky</div>
     </a>
-    <a href="https://acr.mo.gov.cz" target="_blank" rel="noopener" class="izs-logo-wrap">
+    <a href="https://www.mpkladno.cz" target="_blank" rel="noopener" class="izs-logo-wrap">
       <div class="izs-logo-circle">
-        <img src="armada.png" alt="Armáda České republiky" />
+        <img src="mp-kladno-znak.png" alt="Městská policie Kladno" />
       </div>
-      <span class="izs-label">Armáda ČR</span>
-      <div class="izs-tooltip">Armáda České republiky</div>
+      <span class="izs-label">MP Kladno</span>
+      <div class="izs-tooltip">Městská policie Kladno</div>
     </a>
   </div>
   <div class="hero-date-box">
@@ -1061,10 +1070,10 @@
       <img src="foto-policie-specialni.jpg" alt="Speciální policejní jednotka" style="object-position: center 25%;" />
     </div>
     <div class="showcase-item">
-      <img src="foto-armada.jpg" alt="Armáda ČR" style="object-position: center 30%;" />
+      <img src="foto-smecno-ohen.jpg" alt="SDH Smečno v akci" style="object-position: center 40%;" />
     </div>
     <div class="showcase-item">
-      <img src="foto-smecno-ohen.jpg" alt="SDH Smečno v akci" style="object-position: center 40%;" />
+      <img src="foto-mp-kladno.jpg" alt="Městská policie Kladno" style="object-position: center 20%;" />
     </div>
   </div>
 </section>
@@ -1234,13 +1243,13 @@
       <div class="izs-detail-banner-left">
         <div class="izs-detail-banner-eyebrow">Nenechte si ujít</div>
         <div class="izs-detail-banner-title">Podrobný program ukázek IZS</div>
-        <div class="izs-detail-banner-text">Hasiči, záchranáři, policie, vězeňská služba i armáda – nahlédněte, co všechno pro vás v sobotu chystají.</div>
+        <div class="izs-detail-banner-text">Hasiči, záchranáři, policie, vězeňská služba i městská policie Kladno – nahlédněte, co všechno pro vás v sobotu chystají.</div>
         <div class="izs-detail-banner-icons">
           <img src="Hzs.png" alt="HZS" />
           <img src="Zzs.png" alt="ZZS" />
           <img src="Pcr.png" alt="Policie ČR" />
           <img src="vs.png" alt="Vězeňská služba" />
-          <img src="armada.png" alt="Armáda ČR" />
+          <img src="mp-kladno-znak.png" alt="Městská policie Kladno" />
         </div>
       </div>
       <div class="izs-detail-banner-right">
