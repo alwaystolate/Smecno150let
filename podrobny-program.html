@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Podrobný program ukázek IZS | SDH Smečno – 150 let</title>
+  <meta name="description" content="Podrobný program ukázek složek integrovaného záchranného systému na oslavách 150 let SDH Smečno, 5. září 2026." />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --red: #c0272d;
+      --red-dark: #8b1a1e;
+      --gold: #d4a843;
+      --gold-light: #f0c96a;
+      --cream: #fdf6ec;
+      --dark: #1a1208;
+      --mid: #3d2b10;
+      --text: #2c1f0a;
+      --light-bg: #faf3e6;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2.5rem;
+      background: rgba(26,18,8,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(212,168,67,0.25);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.1rem; font-weight: 700; letter-spacing: .04em; text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { color: rgba(253,246,236,0.8); text-decoration: none; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: .3rem; z-index: 110; }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); border-radius: 2px; transition: transform .3s, opacity .3s; }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .pheader {
+      min-height: 60vh;
+      background:
+        radial-gradient(ellipse at 60% 40%, rgba(192,39,45,0.18) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(212,168,67,0.12) 0%, transparent 50%),
+        linear-gradient(160deg, #1a1208 0%, #2d1a08 50%, #1a0f06 100%);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center; padding: 8rem 2rem 4rem; position: relative;
+    }
+    .pheader::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(212,168,67,0.03) 60px, rgba(212,168,67,0.03) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(212,168,67,0.03) 60px, rgba(212,168,67,0.03) 61px);
+    }
+    .pheader-back {
+      position: relative; z-index: 2; display: inline-flex; align-items: center; gap: .5rem;
+      color: rgba(212,168,67,0.8); text-decoration: none; font-size: .8rem; letter-spacing: .1em;
+      text-transform: uppercase; margin-bottom: 2rem; transition: color .2s;
+      border: 1px solid rgba(212,168,67,0.3); padding: .5rem 1.1rem; border-radius: 2rem;
+    }
+    .pheader-back:hover { color: var(--gold-light); border-color: rgba(212,168,67,0.6); }
+    .pheader-badge { position: relative; z-index: 2; display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; padding: .4rem 1.2rem; border-radius: 2rem; margin-bottom: 1.5rem; }
+    .pheader-title { position: relative; z-index: 2; font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 4rem); font-weight: 900; color: var(--cream); line-height: 1.1; margin-bottom: 1rem; }
+    .pheader-title span { color: var(--gold); }
+    .pheader-sub { position: relative; z-index: 2; font-size: 1.05rem; color: rgba(253,246,236,0.65); font-weight: 300; letter-spacing: .03em; max-width: 620px; line-height: 1.7; }
+    .pheader-meta { position: relative; z-index: 2; display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; margin-top: 1.8rem; }
+    .pheader-meta-item { background: rgba(212,168,67,0.1); border: 1px solid rgba(212,168,67,0.25); color: rgba(253,246,236,0.85); padding: .5rem 1.1rem; border-radius: 2rem; font-size: .82rem; letter-spacing: .04em; }
+
+    section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .intro-note {
+      background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.25);
+      border-radius: 1rem; padding: 1.5rem 1.8rem; margin-bottom: 3rem;
+      font-size: .98rem; line-height: 1.8; color: var(--mid);
+    }
+    .intro-note strong { color: var(--red-dark); }
+
+    .izs-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .izs-card {
+      background: white; border-radius: 1.2rem; padding: 1.8rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06); border-top: 4px solid var(--red);
+      display: flex; flex-direction: column; gap: 1rem; transition: transform .25s, box-shadow .25s;
+    }
+    .izs-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.12); }
+    .izs-card-logo-wrap { display: flex; align-items: center; justify-content: center; height: 70px; }
+    .izs-card-logo-wrap img { max-height: 60px; max-width: 100%; object-fit: contain; }
+    .izs-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--dark); text-align: center; }
+    .izs-card p { font-size: .88rem; color: var(--mid); line-height: 1.65; text-align: center; }
+
+    .coming-soon {
+      margin-top: 3rem; text-align: center; background: var(--dark);
+      border-radius: 1.2rem; padding: 3rem 2rem; position: relative; overflow: hidden;
+    }
+    .coming-soon::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 30%, rgba(212,168,67,0.15) 0%, transparent 60%);
+    }
+    .coming-soon-icon { position: relative; z-index: 1; font-size: 2.5rem; display: block; margin-bottom: 1rem; }
+    .coming-soon h2 { position: relative; z-index: 1; font-family: 'Playfair Display', serif; color: var(--cream); font-size: 1.6rem; margin-bottom: .8rem; }
+    .coming-soon p { position: relative; z-index: 1; color: rgba(253,246,236,0.65); font-size: .95rem; line-height: 1.8; max-width: 560px; margin: 0 auto; }
+    .coming-soon .gold { color: var(--gold); font-weight: 500; }
+
+    .back-cta { display: flex; justify-content: center; margin-top: 3rem; }
+    .back-cta a {
+      display: inline-flex; align-items: center; gap: .6rem;
+      background: var(--red); color: white; text-decoration: none;
+      padding: .9rem 1.8rem; border-radius: 2rem; font-size: .88rem;
+      letter-spacing: .05em; font-weight: 500; transition: background .2s, transform .2s;
+    }
+    .back-cta a:hover { background: var(--red-dark); transform: translateY(-2px); }
+
+    footer { background: #0e0b05; padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(212,168,67,0.1); }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--gold); font-weight: 700; margin-bottom: .5rem; }
+    .footer-sub { font-size: .8rem; color: rgba(253,246,236,0.3); letter-spacing: .1em; margin-bottom: 1.5rem; }
+    .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .footer-links a { color: rgba(253,246,236,0.4); text-decoration: none; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; transition: color .2s; }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy { font-size: .75rem; color: rgba(253,246,236,0.2); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.2rem; }
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: flex; flex-direction: column; gap: 0;
+        position: fixed; top: 0; right: -100%; width: 70%; max-width: 280px; height: 100vh;
+        background: rgba(20,13,5,0.98); backdrop-filter: blur(12px);
+        padding: 5rem 2rem 2rem; list-style: none;
+        transition: right .35s cubic-bezier(.4,0,.2,1);
+        border-left: 1px solid rgba(212,168,67,0.2); z-index: 105;
+      }
+      .nav-links.open { right: 0; }
+      .nav-links li { border-bottom: 1px solid rgba(212,168,67,0.08); }
+      .nav-links a { display: block; padding: 1rem 0; font-size: 1rem; letter-spacing: .1em; }
+      .pheader { padding: 6rem 1.2rem 3rem; }
+      section { padding: 3.5rem 1.2rem; }
+      .izs-cards { grid-template-columns: 1fr 1fr; gap: 1rem; }
+    }
+    @media (max-width: 500px) {
+      .izs-cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">SDH Smečno</a>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html#o-akci" onclick="closeMenu()">O akci</a></li>
+    <li><a href="index.html#historie" onclick="closeMenu()">Historie</a></li>
+    <li><a href="index.html#program" onclick="closeMenu()">Program</a></li>
+    <li><a href="index.html#zastita" onclick="closeMenu()">Záštita</a></li>
+    <li><a href="index.html#charita" onclick="closeMenu()">Pomáháme společně</a></li>
+    <li><a href="index.html#partneri" onclick="closeMenu()">Partneři</a></li>
+    <li><a href="index.html#misto" onclick="closeMenu()">Místo</a></li>
+  </ul>
+</nav>
+
+<header class="pheader">
+  <a href="index.html#program" class="pheader-back">← Zpět na hlavní stránku</a>
+  <div class="pheader-badge">Podrobný program</div>
+  <h1 class="pheader-title">Ukázky složek <span>integrovaného záchranného systému</span></h1>
+  <p class="pheader-sub">Sobotní odpoledne oslav 150 let SDH Smečno bude patřit dynamickým i statickým ukázkám práce záchranných a bezpečnostních sborů.</p>
+  <div class="pheader-meta">
+    <span class="pheader-meta-item">📅 Sobota 5. září 2026</span>
+    <span class="pheader-meta-item">📍 Louka u vojenského skanzenu, Smečno</span>
+    <span class="pheader-meta-item">🕒 Statické ukázky po zahájení · dynamické od 15:00</span>
+  </div>
+</header>
+
+<section>
+  <div class="section-inner">
+    <div class="intro-note">
+      📌 <strong>Poznámka:</strong> Přesný minutový rozpis jednotlivých ukázek zveřejníme v den konání akce – ukázky mohou probíhat souběžně na více místech. Níže je přehled složek, které se na programu budou podílet.
+    </div>
+
+    <div class="izs-cards">
+      <div class="izs-card">
+        <div class="izs-card-logo-wrap"><img src="Hzs.png" alt="Hasičský záchranný sbor" /></div>
+        <h3>Hasičský záchranný sbor</h3>
+        <p>Ukázky zásahové techniky, hašení a vyprošťování – práce profesionálních i dobrovolných hasičů v akci.</p>
+      </div>
+      <div class="izs-card">
+        <div class="izs-card-logo-wrap"><img src="Zzs.png" alt="Zdravotnická záchranná služba" /></div>
+        <h3>Zdravotnická záchranná služba</h3>
+        <p>Ukázky první pomoci a práce záchranářů, nahlédnutí do vybavení sanitního vozu.</p>
+      </div>
+      <div class="izs-card">
+        <div class="izs-card-logo-wrap"><img src="Pcr.png" alt="Policie ČR" /></div>
+        <h3>Policie ČR</h3>
+        <p>Ukázky činnosti policejních složek včetně techniky a vybavení, které policisté běžně používají.</p>
+      </div>
+      <div class="izs-card">
+        <div class="izs-card-logo-wrap"><img src="vs.png" alt="Vězeňská služba ČR" /></div>
+        <h3>Vězeňská služba ČR</h3>
+        <p>Prezentace činnosti a techniky Vězeňské služby včetně ukázek kynologie.</p>
+      </div>
+      <div class="izs-card">
+        <div class="izs-card-logo-wrap"><img src="armada.png" alt="Armáda ČR" /></div>
+        <h3>Armáda ČR</h3>
+        <p>Vojenská technika a vybavení k prohlédnutí přímo na louce u vojenského skanzenu.</p>
+      </div>
+      <div class="izs-card">
+        <div class="izs-card-logo-wrap"><img src="smecno-znak.png" alt="Město Smečno" /></div>
+        <h3>A další doprovodný program</h3>
+        <p>Program doplní stánky, dětské atrakce a další překvapení – vše postupně upřesníme.</p>
+      </div>
+    </div>
+
+    <div class="coming-soon">
+      <span class="coming-soon-icon">🚧</span>
+      <h2>Podrobný minutový rozpis se připravuje</h2>
+      <p>Finální harmonogram jednotlivých ukázek zveřejníme <span class="gold">v den konání akce</span> na této stránce a na sociálních sítích SDH Smečno. Sledujte nás, ať vám nic neuteče.</p>
+    </div>
+
+    <div class="back-cta">
+      <a href="index.html#program">← Zpět na hlavní program</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SDH Smečno</div>
+  <div class="footer-sub">Sbor dobrovolných hasičů Smečno · Založen 1876</div>
+  <div class="footer-links">
+    <a href="index.html#o-akci">O akci</a>
+    <a href="index.html#program">Program</a>
+    <a href="index.html#charita">Pomáháme společně</a>
+    <a href="index.html#partneri">Partneři</a>
+    <a href="index.html#misto">Místo</a>
+  </div>
+  <div class="footer-copy">© 2026 SDH Smečno</div>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('nav-links').classList.remove('open');
+  }
+</script>
+
+</body>
+</html>

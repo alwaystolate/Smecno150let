@@ -107,6 +107,41 @@
     .timeline-desc { font-family: 'DM Sans', sans-serif; font-size: .9rem; font-weight: 300; color: rgba(253,246,236,0.6); line-height: 1.6; }
     .program-note { margin-top: 2rem; background: rgba(212,168,67,0.08); border: 1px solid rgba(212,168,67,0.2); border-radius: .75rem; padding: 1.2rem 1.5rem; color: rgba(253,246,236,0.6); font-size: .9rem; line-height: 1.7; }
 
+    .izs-detail-banner {
+      display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+      margin-top: 1.5rem; background: linear-gradient(135deg, rgba(212,168,67,0.14), rgba(192,39,45,0.14));
+      border: 1px solid rgba(212,168,67,0.35); border-radius: 1.2rem;
+      padding: 2rem 2.5rem; text-decoration: none; position: relative; overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .izs-detail-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 85% 50%, rgba(212,168,67,0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .izs-detail-banner:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.35); border-color: rgba(212,168,67,0.7); }
+    .izs-detail-banner-left { position: relative; z-index: 1; }
+    .izs-detail-banner-eyebrow { font-size: .75rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; font-weight: 600; }
+    .izs-detail-banner-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; color: var(--cream); margin-bottom: .6rem; line-height: 1.25; }
+    .izs-detail-banner-text { font-size: .92rem; color: rgba(253,246,236,0.65); line-height: 1.6; max-width: 460px; }
+    .izs-detail-banner-icons { display: flex; gap: .6rem; margin-top: 1.1rem; }
+    .izs-detail-banner-icons img { width: 38px; height: 38px; object-fit: contain; background: rgba(253,246,236,0.92); border-radius: 50%; padding: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.3); }
+    .izs-detail-banner-right { position: relative; z-index: 1; flex-shrink: 0; }
+    .izs-detail-banner-btn {
+      display: flex; align-items: center; gap: .6rem; background: var(--gold); color: #1a1208;
+      padding: .85rem 1.6rem; border-radius: 2rem; font-size: .85rem; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase; white-space: nowrap;
+      transition: gap .3s, background .3s;
+    }
+    .izs-detail-banner:hover .izs-detail-banner-btn { gap: .9rem; background: var(--gold-light); }
+    .izs-detail-banner-arrow { transition: transform .3s; }
+    .izs-detail-banner:hover .izs-detail-banner-arrow { transform: translateX(4px); }
+    @media (max-width: 768px) {
+      .izs-detail-banner { flex-direction: column; text-align: center; padding: 1.6rem; gap: 1.2rem; }
+      .izs-detail-banner-text { max-width: 100%; }
+      .izs-detail-banner-icons { justify-content: center; }
+    }
+
     .charity { background: var(--light-bg); }
     .charity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem; }
     .charity-heart { background: linear-gradient(135deg, #fff5f5, #ffe8e8); border-radius: 1.5rem; padding: 3rem; text-align: center; border: 1px solid rgba(192,39,45,0.15); box-shadow: 0 8px 40px rgba(192,39,45,0.08); }
@@ -1111,7 +1146,7 @@
         <div class="timeline timeline--day">
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">18:00</div>
+            <div class="timeline-time">20:00</div>
             <div class="timeline-event timeline-event--big">Páteční zábava</div>
             <div class="timeline-desc">K tanci a poslechu hraje <strong>Globus Band</strong>.<br>Pořadatelem večera je <strong>S-EVENT</strong>.</div>
           </div>
@@ -1130,31 +1165,32 @@
           <div class="timeline-item">
             <div class="timeline-dot"></div>
             <div class="timeline-time">12:30</div>
-            <div class="timeline-event timeline-event--big">Slavnostní průvod</div>
-            <div class="timeline-desc">Průvod od městského úřadu na louku u vojenského skanzenu za účasti okolních sborů.</div>
+            <div class="timeline-event timeline-event--big">Zahájení programu – dětský den</div>
+            <div class="timeline-desc">Pro nejmenší je připravena <strong>Plyšáková sanitka</strong> – reálná sanitka, ve které dětem první pomoc hravě přiblíží záchranářský specialista, dále <strong>bublinová show</strong>, skákací hrad a další soutěže.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">13:00</div>
-            <div class="timeline-event timeline-event--big">Slavnostní zahájení akce</div>
+            <div class="timeline-time">14:00</div>
+            <div class="timeline-event timeline-event--big">Slavnostní průvod a zahájení akce</div>
+            <div class="timeline-desc">Průvod sborů vyrazí od městského úřadu a zakončí se na louce u vojenského skanzenu, kde dojde ke slavnostnímu zahájení akce.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">13:00 – 17:00</div>
-            <div class="timeline-event timeline-event--big">Výstava techniky a ukázky IZS</div>
-            <div class="timeline-desc">Ukázky činnosti jednotlivých složek integrovaného záchranného systému. Podrobný itinerář bude doplněn několik dní před začátkem akce.</div>
+            <div class="timeline-time">Po zahájení</div>
+            <div class="timeline-event timeline-event--big">Statické ukázky techniky a stánky</div>
+            <div class="timeline-desc">K vidění budou statické ukázky techniky jednotlivých složek IZS, doprovodné stánky a další program.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">Po celý den</div>
-            <div class="timeline-event">Program pro děti</div>
-            <div class="timeline-desc">Od zahájení akce probíhá po celý den bohatý program pro nejmenší – soutěže, stezky s úkoly a další zábava.</div>
+            <div class="timeline-time">15:00</div>
+            <div class="timeline-event timeline-event--big">Dynamické ukázky jednotek IZS</div>
+            <div class="timeline-desc">Přesný rozpis ukázek zveřejníme v den konání akce.</div>
           </div>
           <div class="timeline-item">
             <div class="timeline-dot"></div>
-            <div class="timeline-time">17:30 – 22:00</div>
+            <div class="timeline-time">18:30 – 22:00</div>
             <div class="timeline-event timeline-event--big">Sobotní zábava</div>
-            <div class="timeline-desc">K tanci a poslechu hraje <a href="https://youtube.com/shorts/nULmNDsvG1o?si=VoHTslLssvLDB6Ky" target="_blank" rel="noopener" class="event-link"><strong>Vlasta Korec and Gigolos</strong></a> (17:30 – 19:00) a <a href="https://www.lucierevival.cz" target="_blank" rel="noopener" class="event-link"><strong>Lucie Revival</strong></a> (od 20:00). Pořadatelem večera je <strong>S-EVENT</strong>.</div>
+            <div class="timeline-desc">K tanci a poslechu hraje <a href="https://youtube.com/shorts/nULmNDsvG1o?si=VoHTslLssvLDB6Ky" target="_blank" rel="noopener" class="event-link"><strong>Vlasta Korec and Gigolos</strong></a> (18:30 – 20:00), poté diskotéka <strong>Zlaté devadesátky</strong> s <strong>Maxim Turbulenc</strong> (od 20:00). Pořadatelem večera je <strong>S-EVENT</strong>.</div>
           </div>
         </div>
       </div>
@@ -1192,6 +1228,28 @@
     <div class="program-note">
       📌 <strong style="color:var(--gold-light);">Poznámka:</strong> Jedná se o základní program. Podrobný program včetně rozpisu ukázek a dalšího doprovodného programu bude doplněn a předem sdílen na této stránce i na sociálních sítích.
     </div>
+
+    <!-- Banner - podrobný program ukázek IZS -->
+    <a href="podrobny-program.html" class="izs-detail-banner">
+      <div class="izs-detail-banner-left">
+        <div class="izs-detail-banner-eyebrow">Nenechte si ujít</div>
+        <div class="izs-detail-banner-title">Podrobný program ukázek IZS</div>
+        <div class="izs-detail-banner-text">Hasiči, záchranáři, policie, vězeňská služba i armáda – nahlédněte, co všechno pro vás v sobotu chystají.</div>
+        <div class="izs-detail-banner-icons">
+          <img src="Hzs.png" alt="HZS" />
+          <img src="Zzs.png" alt="ZZS" />
+          <img src="Pcr.png" alt="Policie ČR" />
+          <img src="vs.png" alt="Vězeňská služba" />
+          <img src="armada.png" alt="Armáda ČR" />
+        </div>
+      </div>
+      <div class="izs-detail-banner-right">
+        <span class="izs-detail-banner-btn">
+          <span>Zobrazit program</span>
+          <span class="izs-detail-banner-arrow">→</span>
+        </span>
+      </div>
+    </a>
     <!-- Moderátor -->
     <div class="moderator-block">
       <img src="moderator.jpg" alt="Vlasta Korec" class="moderator-block-photo" />
@@ -1452,4 +1510,13 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function toggleMenu() {
-    document.getElementById('hamburger').classList.tog
+    document.getElementById('hamburger').classList.toggle('open');
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('hamburger').classList.remove('open');
+    document.getElementById('nav-links').classList.remove('open');
+  }
+</script>
+</body>
+</html>
